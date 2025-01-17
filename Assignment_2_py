@@ -1,0 +1,99 @@
+#       1
+
+L = [10, 20, 30, 40, 50, 60, 70, 80]
+
+L.append(200)
+L.append(300)
+
+L.remove(10)
+L.remove(30)
+
+L.sort()
+print("List sorted in ascending order:", L)
+
+
+L.sort(reverse = True)
+print("List sorted in descending order:", L)
+
+#       2
+
+marks = (45, 89.5, 76, 45.4, 89, 92, 58, 45)
+
+print("Highest Score : " , max(marks))
+
+print("Index of Highest Score : " , marks.index(max(marks)))
+
+print(f"Lowest Score : {min(marks)} and the count is {marks.count(min(marks))} ")
+
+reversed_list = list(marks[::-1])
+
+x = int(input("Enter the number : "))
+
+if x in marks:
+    print("First occurrence : " , marks.index(x))
+else:
+    print("Not present")
+
+
+#       3
+import random
+import math
+
+
+list = []
+
+for i in range(100):
+    x = random.randint(101 , 900)
+    list.append(x)
+
+even = 0
+odd = 0
+prime = 0
+for i in list:
+    if(i % 2 == 0):
+        even += 1
+    else:
+        odd += 1
+    flag =  True
+    for j in range(2 , int(math.sqrt(i)) + 1):
+        if(i % j == 0):
+            flag = False
+    
+    if(flag == True):
+       prime += 1 
+
+print("Even : " , even)
+print("Odd : " , odd)
+print("Prime : ", prime)
+
+#       4
+
+A = {34, 56, 78, 90}
+B = {78, 45, 90, 23}
+
+print(f"Unique scores : {A.union(B)}")
+print(f"Common scores : {A.intersection(B)}")
+print(f"Exclusive scores : {A.symmetric_difference(B)}")
+
+print(f"Is Team A scores subset of Team B ? {A.issubset(B)}")
+print(f"Is Team B scores superset of Team A ? {B.issuperset(A)}")
+
+x = int(input("Enter a score to remove "))
+if x in A:
+    A.remove(x)
+    print(f"Removed. Updated set A: {A}")
+else:
+    print(f"Not present")
+
+#       5
+
+dic = {
+    "name" : "Kelly",
+    "age" : 25,
+    "salary" : 8000,
+    "city" : "New york"
+}
+
+dic["location"] = dic.pop("city")
+
+print(dic)
