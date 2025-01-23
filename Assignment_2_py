@@ -75,13 +75,13 @@ print(f"Unique scores : {A.union(B)}")
 print(f"Common scores : {A.intersection(B)}")
 print(f"Exclusive scores : {A.symmetric_difference(B)}")
 
-print(f"Is Team A scores subset of Team B ? {A.issubset(B)}")
-print(f"Is Team B scores superset of Team A ? {B.issuperset(A)}")
+print(f"Team A scores subset of Team B: {A.issubset(B)}")
+print(f"Team B scores superset of Team A: {B.issuperset(A)}")
 
 x = int(input("Enter a score to remove "))
 if x in A:
     A.remove(x)
-    print(f"Removed. Updated set A: {A}")
+    print(f"Removed. set: {A}")
 else:
     print(f"Not present")
 
