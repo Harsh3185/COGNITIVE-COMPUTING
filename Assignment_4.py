@@ -4,24 +4,28 @@ import numpy as np
 arr = np.array([5, 10, 15, 20, 25])
 print("Original Array:", arr)
 
-# 1-a
+# 1a
 print("After Addition:", arr + 2)
 
-# 1-b
+# 1b
 print("After Multiplication:", arr * 3)
 
-# 1-c
+# 1c
 print("After Division:", arr / 2)
+print("\n")
+
 
 # 2
 arr = np.array([1, 2, 3, 6, 4, 5])
 print("Original Array:", arr)
 
-# 2-a
+# 2a
 arr_rev = arr[::-1]
 print("Reversed Array:", arr_rev)
+print("\n")
 
-# 2-b
+
+# 2b
 x = np.array([1, 2, 3, 4, 5, 1, 2, 1, 1, 1])
 y = np.array([1, 1, 1, 2, 3, 4, 2, 4, 3, 3])
 
@@ -33,15 +37,21 @@ indices_y = np.where(y == most_freq_y)[0]
 
 print("Most Frequent in x:", most_freq_x, "at indices", indices_x)
 print("Most Frequent in y:", most_freq_y, "at indices", indices_y)
+print("\n")
+
 
 # 3
 arr = np.array([[10, 20, 30], [40, 50, 60], [70, 80, 90]])
 
-# 3-a
+# 3a
 print("1st row, 2nd column:", arr[0, 1])
+print("\n")
 
-# 3-b
+
+# 3b
 print("3rd row, 1st column:", arr[2, 0])
+print("\n")
+
 
 # 4
 harsh = np.linspace(10, 100, 25)
@@ -56,6 +66,8 @@ print("Total Bytes:", harsh.nbytes)
 reshaped = harsh.reshape(25, 1)
 print("Transpose using reshape:\n", reshaped)
 print("Transpose using T attribute:\n", reshaped.T)
+print("\n")
+
 
 # 5
 ucs420_harsh = np.array([[10, 20, 30, 40], [50, 60, 70, 80], [90, 15, 20, 35]])
@@ -65,6 +77,8 @@ print("Median:", np.median(ucs420_harsh))
 print("Max:", np.max(ucs420_harsh))
 print("Min:", np.min(ucs420_harsh))
 print("Unique Elements:", np.unique(ucs420_harsh))
+print("\n")
+
 
 reshaped_ucs420 = ucs420_harsh.reshape(4, 3)
 resized_ucs420 = ucs420_harsh[:2, :3]
@@ -72,3 +86,5 @@ resized_ucs420 = ucs420_harsh[:2, :3]
 print("Original:\n", ucs420_harsh)
 print("Reshaped (4x3):\n", reshaped_ucs420)
 print("Resized (2x3):\n", resized_ucs420)
+print("\n")
+
