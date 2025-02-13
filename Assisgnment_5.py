@@ -24,17 +24,20 @@ print(array[array != array.astype(int)])
 
 
 #3
-initials_ascii_sum = sum(ord(char) for char in "AB")
-sales = np.array([initials_ascii_sum + i * 50 for i in range(5)])
-tax_rate = ((initials_ascii_sum % 5) + 5) / 100
-print(sales * (1 + tax_rate))
-discounted_sales = np.where(sales < initials_ascii_sum + 100, sales * 0.95, sales * 0.90)
-print(discounted_sales)
+X = ord('H')+ord('C')
+sales = np.array([X, X + 50, X + 100, X + 150, X + 200])
+print("Sales array:", sales)
 
-sales_matrix = np.vstack([sales] * 3)
-weekly_growth = np.array([1.00, 1.02, 1.04]).reshape(3, 1)
-adjusted_sales_matrix = sales_matrix * weekly_growth
-print(adjusted_sales_matrix)
+tax_rate = ((X % 5) + 5) / 100
+print(tax_rate)
+sales_after_tax = sales * (1 - tax_rate)
+print("Sales after tax:", sales_after_tax)
+
+discounted_sales = np.where(sales < X+100, sales_after_tax * 0.95, sales_after_tax * 0.90)
+print("Discounted sales:", discounted_sales)
+
+sales_weeks = np.array([sales, sales * 1.02, sales * 1.02**2])
+print("Sales over 3 weeks:\n", sales_weeks)
 
 
 
