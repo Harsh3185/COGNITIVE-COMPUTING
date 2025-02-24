@@ -5,72 +5,82 @@ import seaborn as sns
 
 #1
 np.random.seed(102317157)
-sales_data = np.random.randint(1000, 5000, (12, 4))
-months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-categories = ['Electronics', 'Clothing', 'Home & Kitchen', 'Sports']
-df = pd.DataFrame(sales_data, columns=categories, index=months)
-print(df.head())
-print(df.describe())
+data_matrix = np.random.randint(1000, 5001, size=(12, 4))
+labels = ['Electronics', 'Clothing', 'Home & Kitchen', 'Sports']
+time_periods = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+data_frame = pd.DataFrame(data_matrix, columns=labels, index=time_periods)
+print(data_frame.head())
+print(data_frame.describe())
 
-df['Total Sales'] = df.sum(axis=1)
-df['Growth Rate'] = df['Total Sales'].pct_change() * 100
+data_frame['Total Sales'] = data_frame.sum(axis=1)
+data_frame['Growth Rate'] = data_frame['Total Sales'].pct_change() * 100
 
-total_sales_per_category = df[categories].sum()
-total_sales_per_month = df['Total Sales']
-avg_growth = df[categories].pct_change().mean()
+total_per_category = data_frame[labels].sum()
+total_per_month = data_frame['Total Sales']
+average_growth = data_frame[labels].pct_change().mean()
 
 if 102317157 % 2 == 0:
-    df['Electronics'] = df['Electronics'] * 0.9
+    data_frame['Electronics'] *= 0.9
 else:
-    df['Clothing'] = df['Clothing'] * 0.85
+    data_frame['Clothing'] *= 0.85
 
 plt.figure(figsize=(10, 6))
-for category in categories:
-    plt.plot(df.index, df[category], label=category)
-plt.legend()
-plt.title('Monthly Sales Trends')
+sns.lineplot(data=data_frame[labels])
+plt.title("Monthly Sales Trends")
+plt.xlabel("Month")
+plt.ylabel("Sales Units")
+plt.legend(labels)
 plt.show()
 
 plt.figure(figsize=(8, 5))
-sns.boxplot(data=df[categories])
-plt.title('Sales Distribution by Category')
+sns.boxplot(data=data_frame[labels])
+plt.title("Sales Distribution by Category")
 plt.show()
 
 #2
-array = np.array([[1, -2, 3], [-4, 5, -6]])
-abs_array = np.abs(array)
-p25 = np.percentile(array, 25, axis=None)
-p50 = np.percentile(array, 50, axis=None)
-p75 = np.percentile(array, 75, axis=None)
-mean_array = np.mean(array)
-median_array = np.median(array)
-std_array = np.std(array)
+data_array = np.array([[1, -2, 3], [-4, 5, -6]])
+absolute_values = np.abs(data_array)
+quartiles_flat = np.percentile(data_array.flatten(), [25, 50, 75])
+quartiles_columns = np.percentile(data_array, [25, 50, 75], axis=0)
+quartiles_rows = np.percentile(data_array, [25, 50, 75], axis=1)
 
-print(abs_array, p25, p50, p75, mean_array, median_array, std_array)
+mean_flat = np.mean(data_array)
+mean_cols = np.mean(data_array, axis=0)
+mean_rows = np.mean(data_array, axis=1)
+
+median_flat = np.median(data_array)
+median_cols = np.median(data_array, axis=0)
+median_rows = np.median(data_array, axis=1)
+
+std_flat = np.std(data_array)
+std_cols = np.std(data_array, axis=0)
+std_rows = np.std(data_array, axis=1)
+
+print(absolute_values, quartiles_flat, quartiles_columns, quartiles_rows, mean_flat, mean_cols, mean_rows, median_flat, median_cols, median_rows, std_flat, std_cols, std_rows)
 
 #3
-a = np.array([-1.8, -1.6, -0.5, 0.5, 1.6, 1.8, 3.0])
-floor_vals = np.floor(a)
-ceil_vals = np.ceil(a)
-trunc_vals = np.trunc(a)
-rounded_vals = np.round(a)
+values = np.array([-1.8, -1.6, -0.5, 0.5, 1.6, 1.8, 3.0])
+floor_values = np.floor(values)
+ceil_values = np.ceil(values)
+truncate_values = np.trunc(values)
+round_values = np.round(values)
 
-print(floor_vals, ceil_vals, trunc_vals, rounded_vals)
+print(floor_values, ceil_values, truncate_values, round_values)
 
 #4
-def swap_list_elements(lst, i, j):
-    temp = lst[i]
-    lst[i] = lst[j]
-    lst[j] = temp
+def switch_elements(lst, idx1, idx2):
+    buffer = lst[idx1]
+    lst[idx1] = lst[idx2]
+    lst[idx2] = buffer
     return lst
 
-lst = [10, 20, 30, 40, 50]
-lst = swap_list_elements(lst, 1, 3)
-print(lst)
+list_sample = [10, 20, 30, 40, 50]
+list_sample = switch_elements(list_sample, 1, 3)
+print(list_sample)
 
 #5
-s = {1, 2, 3, 4}
-s_list = list(s)
-s_list[0], s_list[1] = s_list[1], s_list[0]
-s = set(s_list)
-print(s)
+set_sample = {10, 20, 30, 40, 50}
+set_list = list(set_sample)
+set_list[1], set_list[3] = set_list[3], set_list[1]
+set_sample = set(set_list)
+print(set_sample)
